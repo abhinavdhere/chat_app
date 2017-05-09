@@ -14,10 +14,12 @@ To chat with any of them, just click on their username. </p>
     <th>Username</th> 
   </tr>
 {% for user in users %}
+{% if not user_obj == user %}
   <tr>
     <td>{{user.first_name}} {{user.last_name}}</td> 
     <td><a href="{% url 'chat_window' pk=user.pk %}">{{ user.username }}</td>
   </tr>
+  {% endif %}
 {% endfor %}
 </table>
 

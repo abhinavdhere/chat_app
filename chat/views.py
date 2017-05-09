@@ -65,8 +65,8 @@ def register_success(request):
 
 def chat_window(request,pk):
     receiver = get_object_or_404(auth.models.User, pk=pk)
-    messages_r = message.objects.filter(recipient__id=request.user.pk)
-    messages_s = message.objects.filter(author__id=request.user.pk)
+    messages_r = message.objects.filter(recipient__id=request.user.pk, author__id=pk)
+    messages_s = message.objects.filter(author__id=request.user.pk, recipient__id=pk)
     messages_all = sorted(chain(messages_r,messages_s),key=lambda message:message.timestamp)
     if request.method == "POST":
         form = MessageForm(request.POST)
