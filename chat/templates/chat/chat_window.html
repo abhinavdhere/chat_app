@@ -2,11 +2,16 @@
 
 {% block content %}
 <div class=local-header>
-<h2> Chatting with {{recipient.username}} ... </h2>
+<h2> Chatting with {{receiver.username}} ... </h2>
 <a href="{% url 'logout' %}" class="btn btn-info" role="button">Logout</a>
 <a href="{% url 'home' %}" class="btn btn-info" role="button">Return home</a>
 </div>
 <div class=chat-history>
+{% for message in messages_all %}
+{{message.sender__id}} : {{message.text}}
+{% endfor %}
+</div>
+<div class=send-box>
 
 </div>
 {% endblock %}

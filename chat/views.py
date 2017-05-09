@@ -6,6 +6,7 @@ from .forms import MyRegistrationForm
 from django.template.context_processors import csrf
 from django.contrib import auth
 from django.http import HttpResponseRedirect
+from itertools import chain
 
 def index(request):
 	if not request.user.is_authenticated():
@@ -62,6 +63,10 @@ def register_success(request):
 	return render(request,'chat/register_success.html')
 
 def chat_window(request,pk):
-	recipient = get_object_or_404(auth.models.User, pk=pk)
-	#message_received = recipient.message.text()
-	return render(request,'chat/chat_window.html',{'recipient':recipient})#{'message_received':message_received})	
+	receiver = get_object_or_404(auth.models.User, pk=pk)
+	print (receiver)
+	#sender = request.user.get_username()
+	messages_r = message.objects.filter(recipient__id=pk)
+	messages_s = message.objects.filter(author__id=request.user.pk)
+	messages_all = sorted(chain(messages_r,messages_s),key=lambda message:message.timestamp)
+	return render(request,'chat/chat_window.html',{'receiver':receiver,'messages_all':messages_all})
