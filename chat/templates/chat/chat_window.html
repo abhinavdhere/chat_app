@@ -1,6 +1,7 @@
 {% extends 'chat/base.html' %}
 
 {% block content %}
+<meta http-equiv="Refresh" content="5">
 <div class=local-header>
 <h2> Chatting with {{receiver.username}} ... </h2>
 <a href="{% url 'logout' %}" class="btn btn-info" role="button">Logout</a>
