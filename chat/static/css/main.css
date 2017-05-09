@@ -1,0 +1,8 @@
+.chat-history {
+				padding-left: 2%;
+				border-style: solid;
+}
+
+textarea {
+    width: 200px;
+}

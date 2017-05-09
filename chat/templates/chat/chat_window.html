@@ -8,10 +8,13 @@
 </div>
 <div class=chat-history>
 {% for message in messages_all %}
-{{message.sender__id}} : {{message.text}}
+{{message.author.username}} : {{message.text}} <br>
 {% endfor %}
 </div>
 <div class=send-box>
-
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Send</button>
+    </form>
 </div>
 {% endblock %}

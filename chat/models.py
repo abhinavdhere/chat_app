@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class message(models.Model):
 	author = models.ForeignKey('auth.User',related_name='Author')
-	recipient = models.OneToOneField('auth.User',related_name='Recipient')
+	recipient = models.ForeignKey('auth.User',related_name='Recipient')
 	text = models.TextField()
 	timestamp = models.DateTimeField(default=timezone.now)
 
