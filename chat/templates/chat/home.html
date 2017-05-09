@@ -16,7 +16,7 @@ To chat with any of them, just click on their username. </p>
 {% for user in users %}
   <tr>
     <td>{{user.first_name}} {{user.last_name}}</td> 
-    <td><a href="{% url 'chatWindow' %}">{{user.username}}</td>
+    <td><a href="{% url 'chat_window' pk=user.pk %}">{{ user.username }}</td>
   </tr>
 {% endfor %}
 </table>

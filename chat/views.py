@@ -23,7 +23,7 @@ def home(request):
 def login(request):
 	c = {}
 	c.update(csrf(request))
-	return render(request,'users/login.html',c)
+	return render(request,'chat/login.html',c)
 
 def auth_view(request):
 	username = request.POST.get('username','')
@@ -59,4 +59,9 @@ def register_user(request):
 	return render(request,'chat/register.html',args)
 
 def register_success(request):
-	return render(request,'chat/register_success.html')	
+	return render(request,'chat/register_success.html')
+
+def chat_window(request,pk):
+	recipient = get_object_or_404(auth.models.User, pk=pk)
+	#message_received = recipient.message.text()
+	return render(request,'chat/chat_window.html',{'recipient':recipient})#{'message_received':message_received})	

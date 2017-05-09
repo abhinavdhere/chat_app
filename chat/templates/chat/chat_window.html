@@ -1,0 +1,12 @@
+{% extends 'chat/base.html' %}
+
+{% block content %}
+<div class=local-header>
+<h2> Chatting with {{recipient.username}} ... </h2>
+<a href="{% url 'logout' %}" class="btn btn-info" role="button">Logout</a>
+<a href="{% url 'home' %}" class="btn btn-info" role="button">Return home</a>
+</div>
+<div class=chat-history>
+
+</div>
+{% endblock %}
