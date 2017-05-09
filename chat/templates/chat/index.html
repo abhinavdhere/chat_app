@@ -1,0 +1,10 @@
+{% extends 'chat/base.html' %}
+
+{% block content %}
+<div class=about>
+	<p> ChatsApp lets you freely chat with your friends from various social networks. <br> Signing up is free and easy. <br> Just connect your favorite social media account or sign up using below form. </p>
+</div>
+<li>
+	<ul><a href="{% url 'register' %}"> Sign up using email </ul>
+</li>
+{% endblock %}
